@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">MySGE</string>
+
+
+    <string name="mi_json">
+        {
+            "alumnos": [
+                {"nombre":"Alexis",
+                "no_cuenta":"12345678910",
+                "programa":"ITICs"},
+                {"nombre":"Lulis",
+                "no_cuenta":"12345347910",
+                "programa":"ITICs"},
+                {"nombre":"Karla",
+                "no_cuenta":"12345678912",
+                "programa":"ITICs"},
+                {"nombre":"Juan",
+                "no_cuenta":"12345678950",
+                "programa":"ITICs"}
+            ]
+        }
+    </string>
+
+</resources>
