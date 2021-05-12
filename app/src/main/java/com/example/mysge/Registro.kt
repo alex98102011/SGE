@@ -20,12 +20,12 @@ class Registro : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registro)
 
-        editNControl=findViewById(R.id.editTextNoCuenta)
+        editNControl=findViewById(R.id.editNControl)
         editNombre=findViewById(R.id.editNombre)
         editCarrera=findViewById(R.id.editCarrera)
         editSemestre=findViewById(R.id.editSemestre)
         editPass=findViewById(R.id.editPass)
-        btnRegistro=findViewById(R.id.btnRegistro)
+        btnRegistro=findViewById(R.id.btnRegistrar)
 
 
         val stringBD = intent.getStringExtra("bd")
