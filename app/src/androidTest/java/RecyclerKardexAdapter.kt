@@ -1,13 +1,13 @@
 import android.content.Context
 import androidx.recyclerview.widget.RecyclerView
 import org.json.JSONArray
-import android.content.Context
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-//import mx.edu.itm.link.dadm_a_u1appescolar.R
+import com.example.mysge.R
+
 
 import org.json.JSONObject
 class RecyclerKardexAdapter (val context: Context, val res:Int, val calificaciones: JSONArray) : RecyclerView.Adapter<RecyclerKardexAdapter.KardexVH>()  {
