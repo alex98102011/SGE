@@ -1,70 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#003D79"
+    android:orientation="vertical"
+    android:gravity="center"
     tools:context=".MainActivity">
 
     <EditText
-        android:id="@+id/editTextTextPass"
+        android:id="@+id/editNoControl"
+        android:hint="Ingresa tu número de control"
+        android:layout_margin="15dp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="Contraseña"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextNoCuenta"
-        app:layout_constraintVertical_bias="0.087" />
+        android:layout_height="wrap_content" />
 
     <EditText
-        android:id="@+id/editTextNoCuenta"
+        android:id="@+id/editContrasenia"
+        android:hint="Ingresa tu contraseña"
+        android:layout_margin="15dp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="No. de Control"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.386" />
-
-    <Button
-        android:id="@+id/btnRegistro"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#D59F0F"
-        android:text="Registrar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnAcceder"
-        app:layout_constraintVertical_bias="0.108" />
+        android:layout_height="wrap_content" />
 
     <Button
         android:id="@+id/btnAcceder"
-        style="@android:style/Widget.Material.Light.Button.Toggle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#D59F0F"
-        android:backgroundTint="#D59F0F"
         android:text="Acceder"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPass"
-        app:layout_constraintVertical_bias="0.213"
-        app:rippleColor="#D59F0F" />
+        android:layout_margin="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <Button
+        android:id="@+id/btnRegistrar"
+        android:text="Registrar"
+        android:backgroundTint="@color/black"
+        android:layout_margin="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>
