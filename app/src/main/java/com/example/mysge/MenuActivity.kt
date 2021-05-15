@@ -16,5 +16,57 @@ class MenuActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_menu)
+
+        btnKardex = findViewById(R.id.btnKardex)
+        btnHorario = findViewById(R.id.btnHorario)
+        btnReticula = findViewById(R.id.btnReticula)
+        btnPersonales = findViewById(R.id.btnPersonales)
+
+        stringBD = intent.getStringExtra("bd")
+        if(stringBD == null) {
+            stringBD = resources.getString(R.string.jsonAlumnos)
+        }
+
+        stringAlumno = intent.getStringExtra("alumno")
+
+        println("Alumno:")
+        println(stringAlumno)
+
+        println("BD:")
+        println(stringBD)
+
+        btnKardex.setOnClickListener {
+            invocarActivity(KardexActivity::class.java)
+        }
+
+        btnReticula.setOnClickListener {
+            invocarActivity(AcademicAdvanceActivity::class.java)
+        }
+
+        btnHorario.setOnClickListener {
+            invocarActivity(ScheduleActivity::class.java)
+        }
+
+    }
+
+    private fun invocarActivity(clase : Class<*>) {
+        val intent = Intent(this,clase)
+        intent.putExtra("bd",stringBD)
+        intent.putExtra("alumno",stringAlumno)
+        startActivityForResult(intent, 1)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(resultCode == Activity.RESULT_OK) {
+            data?.getStringExtra("alumno")?.let {
+                stringAlumno = it
+                println(it)
+            }
+            data?.getStringExtra("bd")?.let {
+                stringBD = it
+                println(it)
+            }
+        }
     }
 }
