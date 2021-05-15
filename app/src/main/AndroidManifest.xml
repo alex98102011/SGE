@@ -13,11 +13,7 @@
         <activity android:name=".AcademicAdvanceActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".KardexActivity" />
-        <activity
-            android:name=".Sesion"
-            android:label="@string/title_activity_sesion"
-            android:theme="@style/Theme.MySGE.NoActionBar" />
-        <activity android:name=".Registro" />
+       <activity android:name=".MenuActivity"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

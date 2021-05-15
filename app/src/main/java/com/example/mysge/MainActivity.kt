@@ -39,9 +39,9 @@ class MainActivity : AppCompatActivity() {
                 println(arrayAlumnos[i].toString())
 
                 val jsonStudent = arrayAlumnos.getJSONObject(i)
-                if(jsonStudent.getString("no_control").trim().equals( noControl.trim() )) {
+                if(jsonStudent.getString("no_control").trim() == noControl.trim()) {
                     encontrado = true
-                    if(jsonStudent.getString("contrasenia").trim().equals( pass.trim() )) {
+                    if(jsonStudent.getString("contrasenia").trim() == pass.trim()) {
                         Toast.makeText(this,"Encontrado", Toast.LENGTH_LONG).show()
 
                         val intent = Intent(this,MenuActivity::class.java)

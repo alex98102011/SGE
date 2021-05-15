@@ -35,7 +35,7 @@ class ScheduleActivity : AppCompatActivity() {
         val stringAlumno = intent.getStringExtra("alumno")
 
         // De String a JSON
-        val bd = JSONObject(stringBD)
+        //val bd = JSONObject(stringBD)
         val jsonAlumno = JSONObject(stringAlumno)
 
         // Se obtiene el semestre
