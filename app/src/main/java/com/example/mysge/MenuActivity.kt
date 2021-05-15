@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 
-class MenuActivity : AppCompatActivity() {
+class ukMenuActivity : AppCompatActivity() {
     lateinit var btnKardex : Button
     lateinit var btnHorario : Button
     lateinit var btnReticula : Button
