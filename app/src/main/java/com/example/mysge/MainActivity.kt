@@ -4,66 +4,53 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import org.json.JSONArray
 import org.json.JSONObject
 
+
 class MainActivity : AppCompatActivity() {
 
-    lateinit var editNoControl : EditText
-    lateinit var editPass : EditText
-    lateinit var btnAcceder : Button
-    lateinit var btnRegistrar : Button
 
-    override fun onCreate(savedInstanceState: Bundle?){
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        editNoControl = findViewById<EditText>(R.id.editNoControl)
-        editPass = findViewById<EditText>(R.id.editContrasenia)
-        btnAcceder = findViewById<Button>(R.id.btnAcceder)
-        btnRegistrar = findViewById<Button>(R.id.btnRegistrar)
-
-        val miJson = resources.getString(R.string.jsonAlumnos)
-
-        val jsonAlumnos = JSONObject(miJson)
-
-        val arrayAlumnos = jsonAlumnos.getJSONArray("alumnos")
-
-        btnAcceder.setOnClickListener {
-            val noControl = editNoControl.text.toString()
-            val pass = editPass.text.toString()
-
-            var encontrado = false
-            for(i in 0..(arrayAlumnos.length()-1)){
-                println(arrayAlumnos[i].toString())
-
-                val jsonStudent = arrayAlumnos.getJSONObject(i)
-                if(jsonStudent.getString("no_control").trim().equals( noControl.trim() )){
-                    encontrado = true
-                    if(jsonStudent.getString("contrasenia").trim().equals( pass.trim() )){
-                        Toast.makeText(this,"Encontrado", Toast.LENGTH_LONG).show()
-
-                        val intent = Intent(this,MenuActivity::class.java)
-                        intent.putExtra("alumno",jsonStudent.toString())
-                        intent.putExtra("bd", miJson)
-                        startActivity(intent)
-                        finish()
-                    } else{
-                        Toast.makeText(this,"Contraseña incorrecta",Toast.LENGTH_LONG).show()
-                    }
-                    }
-                }
-            if(!encontrado) {
-                Toast.makeText(this, "No existe el registro", Toast.LENGTH_LONG).show()
-            }
-            }
-        btnRegistrar.setOnClickListener {
-            val intent = Intent(this,RegisterActivity::class.java)
-            intent.putExtra("bd", miJson)
-            startActivity(intent)
-            finish()
+        val btnReg: Button=findViewById(R.id.btnRegistro)
+        val btnAcc: Button=findViewById(R.id.btnAcceder)
+        val noCuen: EditText=findViewById(R.id.editTextNoCuenta)
+        val cont:   EditText=findViewById(R.id.editTextTextPass)
+        var mijson = resources.getString(R.string.mi_json)
+        println(mijson)
+        val nuevoAlumno= JSONObject()
+        nuevoAlumno.put("nombre","Joaquin")
+        nuevoAlumno.put("no_cuenta","420047085")
+        nuevoAlumno.put("carrera","Pedagogia")
+        var jsonObject=JSONObject(mijson)
+        val array= jsonObject.getJSONArray("alumnos")
+        for(i in 0 until array.length()){
+            println(array[i].toString())
         }
+        array.put(nuevoAlumno)
+        jsonObject= JSONObject()
+        jsonObject.put("alumnos",array)
+        println(jsonObject.toString())
+
+        val lista = jsonObject.optJSONArray("alumnos")
+        val cambio= lista.getJSONObject(0)
+        cambio.put("nombre","Marcos")
+        cambio.put("no_cuenta","420047058")
+        cambio.put("carrera","Ingenieria")
+        println(jsonObject.toString(1))
+
+        btnReg.setOnClickListener {
+        val intent= Intent(this,Registro::class.java)
+            startActivity(intent)
+        }
+      
+
     }
+
+
+
+
 }

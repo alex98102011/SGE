@@ -10,7 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MySGE">
         <activity android:name=".KardexActivity"></activity>
-        <activity android:name=".MenuActivity" />
+        <activity
+            android:name=".Sesion"
+            android:label="@string/title_activity_sesion"
+            android:theme="@style/Theme.MySGE.NoActionBar" />
         <activity android:name=".Registro" />
         <activity android:name=".MainActivity">
             <intent-filter>
