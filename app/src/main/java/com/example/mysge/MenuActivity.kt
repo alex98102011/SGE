@@ -25,13 +25,12 @@ class MenuActivity : AppCompatActivity() {
         btnPersonales = findViewById(R.id.btnPersonales)
 
 
-       var stringBD = intent.getStringExtra("bd")
+      var stringBD = intent.getStringExtra("bd")
 
         if(stringBD == null) {
             stringBD = resources.getString(R.string.jsonAlumnos)
         }
-
-       var  stringAlumno = intent.getStringExtra("alumno")
+        var stringAlumno = intent.getStringExtra("alumno")
 
         println("Alumno:")
         println(stringAlumno)
