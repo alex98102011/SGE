@@ -24,6 +24,7 @@ class MenuActivity : AppCompatActivity() {
         btnReticula = findViewById(R.id.btnReticula)
         btnPersonales = findViewById(R.id.btnPersonales)
 
+
         stringBD = intent.getStringExtra("bd")
         if(stringBD == null) {
             stringBD = resources.getString(R.string.jsonAlumnos)
