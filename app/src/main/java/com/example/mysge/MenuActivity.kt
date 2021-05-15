@@ -31,7 +31,7 @@ class MenuActivity : AppCompatActivity() {
 
         stringAlumno = intent.getStringExtra("alumno")
 
-        println("Alumno: ")
+        println("Alumno:")
         println(stringAlumno)
 
         println("BD:")
