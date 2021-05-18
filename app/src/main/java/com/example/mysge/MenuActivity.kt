@@ -1,19 +1,16 @@
 package com.example.mysge
 
-import android.app.Activity
+
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 
-class ukMenuActivity : AppCompatActivity() {
+class MenuActivity : AppCompatActivity() {
     lateinit var btnKardex : Button
     lateinit var btnHorario : Button
     lateinit var btnReticula : Button
     lateinit var btnPersonales : Button
-
-    lateinit var stringBD : String
-    lateinit var stringAlumno : String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,14 +21,12 @@ class ukMenuActivity : AppCompatActivity() {
         btnReticula = findViewById(R.id.btnReticula)
         btnPersonales = findViewById(R.id.btnPersonales)
 
-
-       var stringBD = intent.getStringExtra("bd")
-
+        var stringBD = intent.getStringExtra("bd")
         if(stringBD == null) {
             stringBD = resources.getString(R.string.jsonAlumnos)
         }
 
-       var  stringAlumno = intent.getStringExtra("alumno")
+        val stringAlumno = intent.getStringExtra("alumno")
 
         println("Alumno:")
         println(stringAlumno)
@@ -40,39 +35,18 @@ class ukMenuActivity : AppCompatActivity() {
         println(stringBD)
 
         btnKardex.setOnClickListener {
-            invocarActivity(KardexActivity::class.java)
+            val intent = Intent(this,KardexActivity::class.java)
+            intent.putExtra("bd",stringBD)
+            intent.putExtra("alumno",stringAlumno)
+            startActivityForResult(intent, 1)
         }
 
-        btnReticula.setOnClickListener {
-            invocarActivity(AcademicAdvanceActivity::class.java)
-        }
-
-        btnHorario.setOnClickListener {
-            invocarActivity(ScheduleActivity::class.java)
-        }
-
-    }
-
-    private fun invocarActivity(clase : Class<*>) {
-        val intent = Intent(this,clase)
-        intent.putExtra("bd",stringBD)
-        intent.putExtra("alumno",stringAlumno)
-        startActivityForResult(intent, 1)
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if(resultCode == Activity.RESULT_OK) {
-            data?.getStringExtra("alumno")?.let {
-                stringAlumno = it
-                println(it)
-            }
-            data?.getStringExtra("bd")?.let {
-                stringBD = it
-                println(it)
-            }
+        btnReticula.setOnClickListener{
+            val intent= Intent(this,AcademicAdvanceActivity::class.java)
+            intent.putExtra("bd",stringBD)
+            intent.putExtra("alumno",stringAlumno)
+            startActivityForResult(intent,1)
         }
     }
-
 
 }
