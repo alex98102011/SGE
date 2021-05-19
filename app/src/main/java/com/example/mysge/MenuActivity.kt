@@ -21,6 +21,7 @@ class MenuActivity : AppCompatActivity() {
         btnHorario = findViewById(R.id.btnHorario)
         btnReticula = findViewById(R.id.btnReticula)
         btnPersonales = findViewById(R.id.btnPersonales)
+        btnInscripcion=findViewById(R.id.btnInscripcion)
 
         var stringBD = intent.getStringExtra("bd")
         if(stringBD == null) {
@@ -48,7 +49,13 @@ class MenuActivity : AppCompatActivity() {
             intent.putExtra("alumno",stringAlumno)
             startActivityForResult(intent,1)
         }
+        btnHorario.setOnClickListener {
+            val intent =Intent(this,ScheduleActivity::class.java)
+            intent.putExtra("bd",stringBD)
+            intent.putExtra("alumno",stringAlumno)
+            startActivityForResult(intent,1)
 
+        }
         btnInscripcion.setOnClickListener{
             val  intent=Intent(this,InscripcionActivity::class.java)
             intent.putExtra("bd",stringBD)
