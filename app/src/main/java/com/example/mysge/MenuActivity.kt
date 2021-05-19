@@ -1,6 +1,6 @@
 package com.example.mysge
 
-import android.app.Activity
+
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -11,9 +11,7 @@ class MenuActivity : AppCompatActivity() {
     lateinit var btnHorario : Button
     lateinit var btnReticula : Button
     lateinit var btnPersonales : Button
-
-    lateinit var stringBD : String
-    lateinit var stringAlumno : String
+    lateinit var btnInscripcion: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,14 +21,14 @@ class MenuActivity : AppCompatActivity() {
         btnHorario = findViewById(R.id.btnHorario)
         btnReticula = findViewById(R.id.btnReticula)
         btnPersonales = findViewById(R.id.btnPersonales)
+        btnInscripcion=findViewById(R.id.btnInscripcion)
 
-
-      var stringBD = intent.getStringExtra("bd")
-
-        if(stringBD == null) {
+        var stringBD = intent.getStringExtra("bd")
+        if(stringBD == null ) {
             stringBD = resources.getString(R.string.jsonAlumnos)
         }
-        var stringAlumno = intent.getStringExtra("alumno")
+
+        val stringAlumno = intent.getStringExtra("alumno")
 
         println("Alumno:")
         println(stringAlumno)
@@ -39,39 +37,31 @@ class MenuActivity : AppCompatActivity() {
         println(stringBD)
 
         btnKardex.setOnClickListener {
-            invocarActivity(KardexActivity::class.java)
+            val intent = Intent(this,KardexActivity::class.java)
+            intent.putExtra("bd",stringBD)
+            intent.putExtra("alumno",stringAlumno)
+            startActivityForResult(intent, 1)
         }
 
-        btnReticula.setOnClickListener {
-            invocarActivity(AcademicAdvanceActivity::class.java)
+        btnReticula.setOnClickListener{
+            val intent= Intent(this,AcademicAdvanceActivity::class.java)
+            intent.putExtra("bd",stringBD)
+            intent.putExtra("alumno",stringAlumno)
+            startActivityForResult(intent,1)
         }
-
         btnHorario.setOnClickListener {
-            invocarActivity(ScheduleActivity::class.java)
+            val intent =Intent(this,ScheduleActivity::class.java)
+            intent.putExtra("bd",stringBD)
+            intent.putExtra("alumno",stringAlumno)
+            startActivityForResult(intent,1)
+
         }
-
-    }
-
-    private fun invocarActivity(clase : Class<*>) {
-        val intent = Intent(this,clase)
-        intent.putExtra("bd",stringBD)
-        intent.putExtra("alumno",stringAlumno)
-        startActivityForResult(intent, 1)
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if(resultCode == Activity.RESULT_OK) {
-            data?.getStringExtra("alumno")?.let {
-                stringAlumno = it
-                println(it)
-            }
-            data?.getStringExtra("bd")?.let {
-                stringBD = it
-                println(it)
-            }
+        btnInscripcion.setOnClickListener{
+            val  intent=Intent(this,InscripcionActivity::class.java)
+            intent.putExtra("bd",stringBD)
+            intent.putExtra("alumno",stringAlumno)
+            startActivityForResult(intent,1)
         }
     }
-
 
 }
