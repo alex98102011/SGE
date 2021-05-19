@@ -24,7 +24,7 @@ class MenuActivity : AppCompatActivity() {
         btnInscripcion=findViewById(R.id.btnInscripcion)
 
         var stringBD = intent.getStringExtra("bd")
-        if(stringBD == null) {
+        if(stringBD == null ) {
             stringBD = resources.getString(R.string.jsonAlumnos)
         }
 
