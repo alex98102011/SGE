@@ -11,6 +11,7 @@ class MenuActivity : AppCompatActivity() {
     lateinit var btnHorario : Button
     lateinit var btnReticula : Button
     lateinit var btnPersonales : Button
+    lateinit var btnInscripcion: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,6 +44,13 @@ class MenuActivity : AppCompatActivity() {
 
         btnReticula.setOnClickListener{
             val intent= Intent(this,AcademicAdvanceActivity::class.java)
+            intent.putExtra("bd",stringBD)
+            intent.putExtra("alumno",stringAlumno)
+            startActivityForResult(intent,1)
+        }
+
+        btnInscripcion.setOnClickListener{
+            val  intent=Intent(this,InscripcionActivity::class.java)
             intent.putExtra("bd",stringBD)
             intent.putExtra("alumno",stringAlumno)
             startActivityForResult(intent,1)
