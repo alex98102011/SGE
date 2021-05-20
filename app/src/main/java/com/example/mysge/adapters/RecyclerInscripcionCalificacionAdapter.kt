@@ -47,7 +47,4 @@ class RecyclerInscripcionCalificacionAdapter(val c: Context, val r: Int, val cal
         }
     }
 
-    override fun onBindViewHolder(holder: RecyclerReticulaCalificacionAdapter.CalificacionRecticulaVH, position: Int) {
-        TODO("Not yet implemented")
-    }
 }
