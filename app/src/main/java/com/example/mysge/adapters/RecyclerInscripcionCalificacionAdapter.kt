@@ -12,26 +12,15 @@ import com.example.mysge.R
 import org.json.JSONArray
 import org.json.JSONObject
 
-class RecyclerInscripcionCalificacionAdapter(val c: Context, val r: Int, val calificaciones: JSONArray) : RecyclerView.Adapter<RecyclerReticulaCalificacionAdapter.CalificacionRecticulaVH>()  {
+class RecyclerInscripcionCalificacionAdapter(val c: Context, val r: Int, val calificaciones: JSONArray) : RecyclerView.Adapter<RecyclerInscripcionCalificacionAdapter.CalificacionInscripcionVH>()  {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CalificacionRecticulaVH {
-        return CalificacionRecticulaVH( LayoutInflater.from(c).inflate(r,null) )
-    }
 
-    override fun onBindViewHolder(holder: CalificacionRecticulaVH, position: Int) {
-        val json = calificaciones.getJSONObject(position)
-        holder.bind(json)
-    }
-
-    override fun getItemCount(): Int {
-        return calificaciones.length()
-    }
-
-    inner class CalificacionRecticulaVH(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class CalificacionInscripcionVH(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(json : JSONObject) {
-            val tvMateria = itemView.findViewById<TextView>(R.id.tvRowMateriaReticula)
-            val tvCalificacion = itemView.findViewById<TextView>(R.id.tvRowCalificacionReticula)
-            val cardView = itemView.findViewById<CardView>(R.id.cardRowMateriasReticula)
+            val tvMateria = itemView.findViewById<TextView>(R.id.tvRowMateriaInscripcion)
+            val tvCalificacion = itemView.findViewById<TextView>(R.id.tvRowCalificacionInscripcion)
+            val cardView = itemView.findViewById<CardView>(R.id.cardRowMateriasInscripcion)
+
 
             tvMateria.text = json.getString("materia")
             if( ! json.getString("calificacion").equals("-")) {
@@ -47,4 +36,16 @@ class RecyclerInscripcionCalificacionAdapter(val c: Context, val r: Int, val cal
         }
     }
 
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CalificacionInscripcionVH {
+        return CalificacionInscripcionVH( LayoutInflater.from(c).inflate(r,null) )
+    }
+
+    override fun onBindViewHolder(holder: CalificacionInscripcionVH, position: Int) {
+        val json = calificaciones.getJSONObject(position)
+        holder.bind(json)
+    }
+
+    override fun getItemCount(): Int {
+        return calificaciones.length()
+    }
 }
