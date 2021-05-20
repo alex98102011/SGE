@@ -75,7 +75,7 @@ class RecyclerReticulaAdapter(val c: Context, val res:Int, val kardex:JSONArray,
                 recycler.layoutManager = GridLayoutManager(itemView.context, 3)
             }
 
-            /*if( ! semestreActual.equals(jsonCalificacion.getString("semestre"))) {
+           /* if( ! semestreActual.equals(jsonCalificacion.getString("semestre"))) {
                 semestreActual = jsonCalificacion.getString("semestre")
 
                 val tvSemestre = itemView.findViewById<TextView>(R.id.tvRowReticulaSemestre)
