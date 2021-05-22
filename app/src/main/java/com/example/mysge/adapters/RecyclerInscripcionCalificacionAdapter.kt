@@ -9,6 +9,7 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mysge.R
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import org.json.JSONArray
 import org.json.JSONObject
 
@@ -20,7 +21,7 @@ class RecyclerInscripcionCalificacionAdapter(val c: Context, val r: Int, val cal
             val tvMateria = itemView.findViewById<TextView>(R.id.tvRowMateriaInscripcion)
             val tvCalificacion = itemView.findViewById<TextView>(R.id.tvRowCalificacionInscripcion)
             val cardView = itemView.findViewById<CardView>(R.id.cardRowMateriasInscripcion)
-          //  val button=findViewById<Button>(R.id.btnSeleccionarInscripcion)
+            val btnSelect=itemView.findViewById<FloatingActionButton>(R.id.btnSeleccionarMateia)
 
 
             tvMateria.text = json.getString("materia")
@@ -28,6 +29,7 @@ class RecyclerInscripcionCalificacionAdapter(val c: Context, val r: Int, val cal
                 tvCalificacion.text = json.getString("calificacion")
                 if (json.getString("calificacion").toInt() >= 70) {
                     cardView.setCardBackgroundColor(Color.parseColor("#00cc00"))
+                    btnSelect.visibility=View.INVISIBLE
                 } else {
                     cardView.setCardBackgroundColor(Color.BLUE)
                     tvCalificacion.text = "La materia debe ser seleccionada"
