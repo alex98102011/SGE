@@ -32,7 +32,7 @@ class RecyclerInscripcionCalificacionAdapter(val c: Context, val r: Int, val cal
                     cardView.setCardBackgroundColor(Color.parseColor("#E6D00C"))
                 }
             } else {
-               // cardView.setCardBackgroundColor(Color.BLUE)
+                cardView.setCardBackgroundColor(Color.BLUE)
                 tvCalificacion.text = "Materia Posible a Seleccionar"
             }
         }

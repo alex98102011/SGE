@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.appcompat.view.menu.MenuView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mysge.R
@@ -17,7 +18,7 @@ class RecylerInscripcionAdapter (val c: Context, val res:Int, val kardex: JSONAr
         return InscripcionVH( LayoutInflater.from(c).inflate(res, null) )
     }
 
-    override fun onBindViewHolder(holder: RecylerInscripcionAdapter.InscripcionVH, position: Int) {
+    override fun onBindViewHolder(holder: InscripcionVH, position: Int) {
         holder.bind(position)
     }
 
@@ -31,7 +32,7 @@ class RecylerInscripcionAdapter (val c: Context, val res:Int, val kardex: JSONAr
             val jsonSemestre = reticula.getJSONObject(i)
 
             val tvSemestre = itemView.findViewById<TextView>(R.id.tvRowInscripcionSemestre)
-            tvSemestre.text = "Semestre ${i + 1}"
+            tvSemestre.text = "Semestre ${i+1}"
 
             val jsonArray = JSONArray()
             for (s in 0..kardex.length() - 1) {
@@ -73,30 +74,6 @@ class RecylerInscripcionAdapter (val c: Context, val res:Int, val kardex: JSONAr
                 )
                 recycler.layoutManager = GridLayoutManager(itemView.context, 3)
             }
-
-            /*if( ! semestreActual.equals(jsonCalificacion.getString("semestre"))) {
-                semestreActual = jsonCalificacion.getString("semestre")
-
-                val tvSemestre = itemView.findViewById<TextView>(R.id.tvRowReticulaSemestre)
-                tvSemestre.text = "Semestre $semestreActual"
-
-                val calificacionesXSemestre = JSONArray()
-                for(i in 0..reticula.length()-1) {
-                    val json = reticula.getJSONObject(i)
-                    if(json.getString("semestre").equals(semestreActual)) {
-                        calificacionesXSemestre.put(json)
-                    }
-                }
-                if(calificacionesXSemestre.length() > 0) {
-                    val recycler = itemView.findViewById<RecyclerView>(R.id.recyclerRowReticula)
-                    recycler.adapter = RecyclerReticulaCalificacionAdapter(
-                        itemView.context,
-                        R.layout.row_materias_reticula,
-                        calificacionesXSemestre
-                    )
-                    recycler.layoutManager = GridLayoutManager(itemView.context, 3)
-                }
-            }*/
         }
     }
 }
