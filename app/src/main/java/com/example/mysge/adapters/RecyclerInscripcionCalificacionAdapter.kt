@@ -29,7 +29,9 @@ class RecyclerInscripcionCalificacionAdapter(val c: Context, val r: Int, val cal
                 if (json.getString("calificacion").toInt() >= 70) {
                     cardView.setCardBackgroundColor(Color.parseColor("#00cc00"))
                 } else {
-                    cardView.setCardBackgroundColor(Color.parseColor("#E6D00C"))
+                    cardView.setCardBackgroundColor(Color.BLUE)
+                    tvCalificacion.text = "La materia debe ser seleccionada"
+
                 }
             } else {
                 cardView.setCardBackgroundColor(Color.BLUE)

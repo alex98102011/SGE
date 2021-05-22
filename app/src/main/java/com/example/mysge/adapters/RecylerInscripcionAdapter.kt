@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.appcompat.view.menu.MenuView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mysge.R
@@ -27,13 +26,13 @@ class RecylerInscripcionAdapter (val c: Context, val res:Int, val kardex: JSONAr
     }
 
     inner class InscripcionVH(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
         fun bind(i: Int) {
-
             val jsonSemestre = reticula.getJSONObject(i)
-
-            val tvSemestre = itemView.findViewById<TextView>(R.id.tvRowInscripcionSemestre)
-            tvSemestre.text = "Semestre ${i+1}"
-
+            fun bind(calif: JSONObject) {
+                val tvSemestre = itemView.findViewById<TextView>(R.id.tvSemInscripcion)
+                tvSemestre.text = "Semestre ${calif.getInt("semestre")}"
+            }
             val jsonArray = JSONArray()
             for (s in 0..kardex.length() - 1) {
                 val jsonSemestre = kardex.getJSONObject(s)
@@ -46,7 +45,7 @@ class RecylerInscripcionAdapter (val c: Context, val res:Int, val kardex: JSONAr
             if (jsonArray.length() > 0) {
                 println("Colocando materias en el semestre ${i + 1}:\n$jsonArray")
 
-                val recycler = itemView.findViewById<RecyclerView>(R.id.recyclerRowInscripcion)
+                val recycler = itemView.findViewById<RecyclerView>(R.id.recyclerRowReticula)
                 recycler.adapter = RecyclerInscripcionCalificacionAdapter(
                     itemView.context,
                     R.layout.row_materias_inscripcion,
@@ -66,7 +65,7 @@ class RecylerInscripcionAdapter (val c: Context, val res:Int, val kardex: JSONAr
                     arrayMxC.put(miJson)
                 }
 
-                val recycler = itemView.findViewById<RecyclerView>(R.id.recyclerRowInscripcion)
+                val recycler = itemView.findViewById<RecyclerView>(R.id.recyclerRowReticula)
                 recycler.adapter = RecyclerInscripcionCalificacionAdapter(
                     itemView.context,
                     R.layout.row_materias_inscripcion,

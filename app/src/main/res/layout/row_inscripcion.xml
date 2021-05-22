@@ -8,8 +8,8 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/tvRowInscripcionSemestre"
-        android:text="Semestre"
+        android:id="@+id/tvSemInscripcion"
+        android:text=""
         android:textColor="#000"
         android:gravity="center"
         android:background="#ccc"
