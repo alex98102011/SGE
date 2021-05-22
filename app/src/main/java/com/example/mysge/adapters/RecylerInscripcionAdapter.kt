@@ -30,7 +30,7 @@ class RecylerInscripcionAdapter (val c: Context, val res:Int, val kardex: JSONAr
 
             val jsonSemestre = reticula.getJSONObject(i)
 
-            val tvSemestre = itemView.findViewById<TextView>(R.id.tvRowReticulaSemestre)
+            val tvSemestre = itemView.findViewById<TextView>(R.id.tvRowInscripcionSemestre)
             tvSemestre.text = "Semestre ${i + 1}"
 
             val jsonArray = JSONArray()
@@ -46,9 +46,9 @@ class RecylerInscripcionAdapter (val c: Context, val res:Int, val kardex: JSONAr
                 println("Colocando materias en el semestre ${i + 1}:\n$jsonArray")
 
                 val recycler = itemView.findViewById<RecyclerView>(R.id.recyclerRowInscripcion)
-                recycler.adapter = RecyclerReticulaCalificacionAdapter(
+                recycler.adapter = RecyclerInscripcionCalificacionAdapter(
                     itemView.context,
-                    R.layout.row_materias_reticula,
+                    R.layout.row_materias_inscripcion,
                     jsonArray
                 )
                 recycler.layoutManager = GridLayoutManager(itemView.context, 3)
@@ -66,9 +66,9 @@ class RecylerInscripcionAdapter (val c: Context, val res:Int, val kardex: JSONAr
                 }
 
                 val recycler = itemView.findViewById<RecyclerView>(R.id.recyclerRowInscripcion)
-                recycler.adapter = RecyclerReticulaCalificacionAdapter(
+                recycler.adapter = RecyclerInscripcionCalificacionAdapter(
                     itemView.context,
-                    R.layout.row_materias_reticula,
+                    R.layout.row_materias_inscripcion,
                     arrayMxC
                 )
                 recycler.layoutManager = GridLayoutManager(itemView.context, 3)
