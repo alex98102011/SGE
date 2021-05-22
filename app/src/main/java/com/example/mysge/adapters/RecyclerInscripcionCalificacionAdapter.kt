@@ -20,6 +20,7 @@ class RecyclerInscripcionCalificacionAdapter(val c: Context, val r: Int, val cal
             val tvMateria = itemView.findViewById<TextView>(R.id.tvRowMateriaInscripcion)
             val tvCalificacion = itemView.findViewById<TextView>(R.id.tvRowCalificacionInscripcion)
             val cardView = itemView.findViewById<CardView>(R.id.cardRowMateriasInscripcion)
+          //  val button=findViewById<Button>(R.id.btnSeleccionarInscripcion)
 
 
             tvMateria.text = json.getString("materia")
@@ -31,7 +32,7 @@ class RecyclerInscripcionCalificacionAdapter(val c: Context, val r: Int, val cal
                     cardView.setCardBackgroundColor(Color.parseColor("#E6D00C"))
                 }
             } else {
-                cardView.setCardBackgroundColor((Color.BLUE))
+               // cardView.setCardBackgroundColor(Color.BLUE)
                 tvCalificacion.text = "Materia Posible a Seleccionar"
             }
         }

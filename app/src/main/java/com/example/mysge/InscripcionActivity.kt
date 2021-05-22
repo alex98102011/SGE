@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mysge.adapters.RecyclerReticulaAdapter
+import com.example.mysge.adapters.RecylerInscripcionAdapter
 import com.example.mysge.utils.AdminBD
 import org.json.JSONArray
 import org.json.JSONObject
@@ -55,7 +56,7 @@ class InscripcionActivity : AppCompatActivity() {
                 }
 
                 // Colocamos el resultado en la UI
-                recyclerInscripcion.adapter = RecyclerReticulaAdapter(this, R.layout.row_reticula, jsonAlumnoMaterias, bd.getJSONArray("materias"))
+                recyclerInscripcion.adapter = RecylerInscripcionAdapter(this, R.layout.row_reticula, jsonAlumnoMaterias, bd.getJSONArray("materias"))
                 recyclerInscripcion.layoutManager = LinearLayoutManager(this)
 
                 println("Nueva BD:\n$bd")
@@ -67,7 +68,7 @@ class InscripcionActivity : AppCompatActivity() {
             jsonAlumnoMaterias = jsonAlumno.getJSONArray("kardex")
 
             // Colocamos el resultado en la UI
-            recyclerInscripcion.adapter = RecyclerReticulaAdapter(this, R.layout.row_reticula, jsonAlumnoMaterias, bd.getJSONArray("materias"))
+            recyclerInscripcion.adapter = RecylerInscripcionAdapter(this, R.layout.row_reticula, jsonAlumnoMaterias, bd.getJSONArray("materias"))
             recyclerInscripcion.layoutManager = LinearLayoutManager(this)
         }
 
