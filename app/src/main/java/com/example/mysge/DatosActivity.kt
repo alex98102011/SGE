@@ -8,13 +8,17 @@ import org.json.JSONObject
 class DatosActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
 
+
+
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_datos)
+
+
         val texNom=findViewById<TextView>(R.id.textViewNombre)
         val texSem=findViewById<TextView>(R.id.TvSemestre)
         val textcontrol=findViewById<TextView>(R.id.textViewNoControl)
         val texcarrara=findViewById<TextView>(R.id.textViewCarrera)
 
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_datos)
         var stringBD = intent.getStringExtra("bd")
         if(stringBD == null) {
             stringBD = resources.getString(R.string.jsonAlumnos)
