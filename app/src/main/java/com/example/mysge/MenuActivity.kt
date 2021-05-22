@@ -62,6 +62,14 @@ class MenuActivity : AppCompatActivity() {
             intent.putExtra("alumno",stringAlumno)
             startActivityForResult(intent,1)
         }
+
+        btnPersonales.setOnClickListener {
+            val  intent=Intent(this,DatosActivity::class.java)
+            intent.putExtra("bd",stringBD)
+            intent.putExtra("alumno",stringAlumno)
+            startActivityForResult(intent,1)
+         }
+
     }
 
 }

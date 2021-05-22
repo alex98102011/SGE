@@ -49,6 +49,8 @@ class MainActivity : AppCompatActivity() {
                         intent.putExtra("alumno",jsonStudent.toString())
                         intent.putExtra("bd", miJson)
                         startActivity(intent)
+                        val intent2= Intent(this,DatosActivity::class.java)
+                        intent2.putExtra("alumno",jsonStudent.toString())
                         finish()
                     } else {
                         Toast.makeText(this,"Contraseña incorrecta", Toast.LENGTH_LONG).show()
