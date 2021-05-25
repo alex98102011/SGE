@@ -54,6 +54,7 @@ class RecyclerInscripcionCalificacionAdapter(val c: Context, val r: Int, val cal
                 tvCalificacion.text = "Cursando"
 
             }
+
         }
     }
 
