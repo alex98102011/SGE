@@ -56,9 +56,19 @@ class RecyclerInscripcionCalificacionAdapter(val c: Context, val r: Int, val cal
 
                 if(btnPr1.isChecked){
                     println("Se ha seleccionado al profesor 1")
+                    inscripcion.put("materia",tvMateria.text)
+                    inscripcion.put("estatus","cursando")
+                    inscripcion.put("profesor","ProfesorA")
+                    inscripcion.put("hora","matutino")
+                    println(inscripcion)
 
                 }else{
                     println("Se ha seleccionado al profesor 2")
+                    inscripcion.put("materia",tvMateria.toString())
+                    inscripcion.put("estatus","cursando")
+                    inscripcion.put("profesor","ProfesorB")
+                    inscripcion.put("hora","matutino")
+                    println(inscripcion)
                 }
 
             }
