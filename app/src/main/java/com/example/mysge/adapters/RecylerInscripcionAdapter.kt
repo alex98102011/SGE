@@ -25,7 +25,7 @@ class RecylerInscripcionAdapter (val c: Context, val res:Int, val kardex: JSONAr
         return reticula.length()
     }
 
-    inner class InscripcionVH(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class InscripcionVH (itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         fun bind(i: Int) {
             val jsonSemestre = reticula.getJSONObject(i)
