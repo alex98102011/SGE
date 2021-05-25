@@ -33,6 +33,24 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
+        <RadioGroup
+            android:id="@+id/OptProfesor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/Profesor1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Profesor A" />
+
+            <RadioButton
+                android:id="@+id/Profesor2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Profesor B" />
+        </RadioGroup>
+
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/btnSeleccionarMateia"
             android:layout_width="wrap_content"

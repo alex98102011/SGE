@@ -29,10 +29,9 @@ class RecylerInscripcionAdapter (val c: Context, val res:Int, val kardex: JSONAr
 
         fun bind(i: Int) {
             val jsonSemestre = reticula.getJSONObject(i)
-            fun bind(calif: JSONObject) {
-                val tvSemestre = itemView.findViewById<TextView>(R.id.tvSemInscripcion)
-                tvSemestre.text = "Semestre ${calif.getInt("semestre")}"
-            }
+            val tvSemestre = itemView.findViewById<TextView>(R.id.tvRowReticulaSemestre)
+
+
             val jsonArray = JSONArray()
             for (s in 0..kardex.length() - 1) {
                 val jsonSemestre = kardex.getJSONObject(s)
