@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.RadioButton
+import android.widget.RadioGroup
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
@@ -26,6 +27,7 @@ class RecyclerInscripcionCalificacionAdapter(val c: Context, val r: Int, val cal
             val btnSelect=itemView.findViewById<FloatingActionButton>(R.id.btnSeleccionarMateia)
             val btnPr1=itemView.findViewById<RadioButton>(R.id.Profesor1)
             val btnPr2=itemView.findViewById<RadioButton>(R.id.Profesor2)
+            val btnPr=itemView.findViewById<RadioGroup>(R.id.OptProfesor)
             tvMateria.text = json.getString("materia")
             val inscripcion= JSONObject(""" {"materia":"Quimica","estatus":"Cursando","profesor":"profesorA","hora":"matutino"}""")
             println(inscripcion)
@@ -51,6 +53,13 @@ class RecyclerInscripcionCalificacionAdapter(val c: Context, val r: Int, val cal
             btnSelect.setOnClickListener {
                 cardView.setCardBackgroundColor(Color.RED)
                 tvCalificacion.text = "Cursando"
+
+                if(btnPr1.isChecked){
+                    println("Se ha seleccionado al profesor 1")
+
+                }else{
+                    println("Se ha seleccionado al profesor 2")
+                }
 
             }
 

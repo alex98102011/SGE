@@ -42,12 +42,14 @@
                 android:id="@+id/Profesor1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:checked="false"
                 android:text="Profesor A" />
 
             <RadioButton
                 android:id="@+id/Profesor2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+
                 android:text="Profesor B" />
         </RadioGroup>
 
