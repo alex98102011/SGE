@@ -30,6 +30,7 @@ class RecyclerInscripcionCalificacionAdapter(val c: Context, val r: Int, val cal
             val btnPr1=itemView.findViewById<RadioButton>(R.id.Profesor1)
             val btnPr2=itemView.findViewById<RadioButton>(R.id.Profesor2)
             tvMateria.text = json.getString("materia")
+
             if( ! json.getString("calificacion").equals("-")) {
                 tvCalificacion.text = json.getString("calificacion")
                 if (json.getString("calificacion").toInt() >= 70) {
