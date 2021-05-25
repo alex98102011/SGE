@@ -4,14 +4,7 @@
 
     <string name="jsonAlumnos">
         {
-            "inscripcion" : [
-                {
-                    "materia":"Quimica",
-                    "estatus":"Cursando",
-                    "profesor":"Profesor A",
-                    "hora":"Matutino"
-                }
-        ],
+
             "alumnos" : [
                 {
                     "no_control":"21120001",
@@ -130,9 +123,19 @@
                     ]
                 }
             ]
+
         }
     </string>
-
+    <string name="jsonInscripcion">
+{
+        "Inscripcion":[{
+        "materia":"Quimica",
+        "estatus":"Cursando",
+        "profesor":"Profesor A",
+        "hora":"Matutino"
+        }]
+        }
+    </string>
     <string name="title_activity_sesion">Sesion</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>

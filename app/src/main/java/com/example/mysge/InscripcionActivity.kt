@@ -18,7 +18,7 @@ class InscripcionActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_inscripcion)
-
+        val jsonInscripcion=resources.getString(R.string.jsonInscripcion)
         recyclerInscripcion=findViewById(R.id.recyclerInscripcion)
 
         var stringBD = intent.getStringExtra("bd")
@@ -70,12 +70,14 @@ class InscripcionActivity : AppCompatActivity() {
             // Colocamos el resultado en la UI
             recyclerInscripcion.adapter = RecylerInscripcionAdapter(this, R.layout.row_reticula, jsonAlumnoMaterias, bd.getJSONArray("materias"))
             recyclerInscripcion.layoutManager = LinearLayoutManager(this)
+
         }
 
         // Se agregan al intent los resultados
         val intent = Intent()
         intent.putExtra("bd", bd.toString())
         intent.putExtra("alumno", jsonAlumno.toString())
+        intent.putExtra("inscripcion",jsonInscripcion.toString())
         setResult(Activity.RESULT_OK,intent)
     }
 }
