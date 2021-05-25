@@ -27,7 +27,7 @@ class RecyclerInscripcionCalificacionAdapter(val c: Context, val r: Int, val cal
             val btnSelect=itemView.findViewById<FloatingActionButton>(R.id.btnSeleccionarMateia)
             val btnPr1=itemView.findViewById<RadioButton>(R.id.Profesor1)
             val btnPr2=itemView.findViewById<RadioButton>(R.id.Profesor2)
-            val btnPr=itemView.findViewById<RadioGroup>(R.id.OptProfesor)
+
             tvMateria.text = json.getString("materia")
             val inscripcion= JSONObject(""" {"materia":"Quimica","estatus":"Cursando","profesor":"profesorA","hora":"matutino"}""")
             println(inscripcion)
@@ -49,6 +49,7 @@ class RecyclerInscripcionCalificacionAdapter(val c: Context, val r: Int, val cal
                 cardView.setCardBackgroundColor(Color.BLUE)
                 tvCalificacion.text = "Materia Posible a Seleccionar"
             }
+            val json= JSONObject()
 
             btnSelect.setOnClickListener {
                 cardView.setCardBackgroundColor(Color.RED)
@@ -64,10 +65,10 @@ class RecyclerInscripcionCalificacionAdapter(val c: Context, val r: Int, val cal
 
                 }else{
                     println("Se ha seleccionado al profesor 2")
-                    inscripcion.put("materia",tvMateria.toString())
+                    inscripcion.put("materia",tvMateria.text)
                     inscripcion.put("estatus","cursando")
                     inscripcion.put("profesor","ProfesorB")
-                    inscripcion.put("hora","matutino")
+                    inscripcion.put("hora","vespertino")
                     println(inscripcion)
                 }
 
@@ -79,9 +80,11 @@ class RecyclerInscripcionCalificacionAdapter(val c: Context, val r: Int, val cal
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CalificacionInscripcionVH {
         return CalificacionInscripcionVH( LayoutInflater.from(c).inflate(r,null) )
 
+
     }
 
     override fun onBindViewHolder(holder: CalificacionInscripcionVH, position: Int) {
+
         val json = calificaciones.getJSONObject(position)
         holder.bind(json)
     }
