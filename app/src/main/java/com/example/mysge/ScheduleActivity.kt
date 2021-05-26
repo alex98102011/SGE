@@ -16,11 +16,12 @@ class ScheduleActivity : AppCompatActivity() {
     lateinit var linearMiercoles : LinearLayout
     lateinit var linearJueves : LinearLayout
     lateinit var linearViernes : LinearLayout
+    lateinit var prueba:TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_schedule)
-
+        prueba=findViewById<TextView>(R.id.prueba)
         linearLunes = findViewById(R.id.linearScheduleMonday)
         linearMartes = findViewById(R.id.linearScheduleTuesday)
         linearMiercoles = findViewById(R.id.linearScheduleWednesday)
@@ -34,6 +35,9 @@ class ScheduleActivity : AppCompatActivity() {
 
         val stringAlumno = intent.getStringExtra("alumno")
         val carga=intent.getStringArrayListExtra("seleccion")
+        println()
+        println(carga)
+        prueba.text=carga.toString()
         // De String a JSON
         val bd = JSONObject(stringBD)
         val jsonAlumno = JSONObject(stringAlumno)

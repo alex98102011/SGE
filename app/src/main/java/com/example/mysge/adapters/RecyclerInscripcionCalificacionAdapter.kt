@@ -50,8 +50,20 @@ class RecyclerInscripcionCalificacionAdapter(val c: Context, val r: Int, val cal
                     btnPr2.visibility=View.INVISIBLE
 
                 } else {
-                    cardView.setCardBackgroundColor(Color.BLUE)
-                    tvCalificacion.text = "La materia debe ser seleccionada"
+                    cardView.setCardBackgroundColor(Color.GRAY)
+                    tvCalificacion.text = "Reprobada Cursando"
+                    btnPr1.visibility=View.INVISIBLE
+                    btnPr2.visibility=View.INVISIBLE
+                    btnSelect.visibility=View.INVISIBLE
+                    val inscripcion= JSONObject(""" {"materia":"Quimica","estatus":"Cursando","profesor":"profesorA","hora":"matutino"}""")
+                    println("Se ha seleccionado al profesor 1")
+                    inscripcion.put("materia",tvMateria.text)
+                    inscripcion.put("estatus","Reprobada_Cursando")
+                    inscripcion.put("profesor","ProfesorA")
+                    inscripcion.put("hora","matutino")
+                    println(inscripcion)
+                    seleccion.put(inscripcion)
+                    println(seleccion)
 
                 }
             } else {
@@ -75,17 +87,7 @@ class RecyclerInscripcionCalificacionAdapter(val c: Context, val r: Int, val cal
                     seleccion.put(inscripcion)
                     println(seleccion)
                     val snack = Snackbar.make(it, "¿Deseas Terminar?", Snackbar.LENGTH_LONG)
-                    snack.setAction("Si") {
-                        class enviardatos(val view: View) : RecyclerView.ViewHolder(view) {
-                            init {
-                                val intent = Intent(view.context, ScheduleActivity::class.java)
-                                intent.putExtra("seleccion", seleccion.toString())
-                                view.context.startActivity(intent)
-
-                            }
-                        }
-
-                    }
+                    snack.setAction("Si",{"Hola"})
                     snack.setActionTextColor(Color.RED)
                     snack.show()
 
@@ -101,7 +103,7 @@ class RecyclerInscripcionCalificacionAdapter(val c: Context, val r: Int, val cal
                     seleccion.put(inscripcion)
                     println(seleccion)
                     val snack = Snackbar.make(it, "¿Deseas Terminar?", Snackbar.LENGTH_LONG)
-                    snack.setAction("Si",{"hola"})
+                    snack.setAction("Si",{"Hola"})
                     snack.setActionTextColor(Color.RED)
                     snack.show()
 
