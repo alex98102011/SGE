@@ -3,6 +3,7 @@ package com.example.mysge.adapters
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +11,7 @@ import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mysge.R
 import com.example.mysge.ScheduleActivity
@@ -21,8 +23,9 @@ import org.json.JSONObject
 class RecyclerInscripcionCalificacionAdapter(val c: Context, val r: Int, val calificaciones: JSONArray) : RecyclerView.Adapter<RecyclerInscripcionCalificacionAdapter.CalificacionInscripcionVH>()  {
 
     val seleccion = JSONArray()
-    inner class CalificacionInscripcionVH(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
+    inner class CalificacionInscripcionVH(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val intent=  Intent(this,ScheduleActivity::class.java)
         fun bind(json : JSONObject) {
             val tvMateria = itemView.findViewById<TextView>(R.id.tvRowMateriaInscripcion)
             val tvCalificacion = itemView.findViewById<TextView>(R.id.tvRowCalificacionInscripcion)
@@ -68,7 +71,10 @@ class RecyclerInscripcionCalificacionAdapter(val c: Context, val r: Int, val cal
                     println(inscripcion)
                     seleccion.put(inscripcion)
                     println(seleccion)
-
+                    val snack = Snackbar.make(it, "¿Deseas Terminar?", Snackbar.LENGTH_LONG)
+                    snack.setAction("Si", {"Hola"})
+                    snack.setActionTextColor(Color.RED)
+                    snack.show()
 
 
                 }else{
