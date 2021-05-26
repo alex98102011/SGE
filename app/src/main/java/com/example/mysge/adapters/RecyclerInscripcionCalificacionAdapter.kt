@@ -26,7 +26,7 @@ import org.json.JSONObject
 class RecyclerInscripcionCalificacionAdapter(val c: Context, val r: Int, val calificaciones: JSONArray) : RecyclerView.Adapter<RecyclerInscripcionCalificacionAdapter.CalificacionInscripcionVH>()  {
 
     val seleccion = JSONArray()
-
+    var materias=0
     inner class CalificacionInscripcionVH(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         fun bind(json : JSONObject) {
@@ -65,6 +65,9 @@ class RecyclerInscripcionCalificacionAdapter(val c: Context, val r: Int, val cal
                     seleccion.put(inscripcion)
                     println(seleccion)
 
+                   materias= seleccion.length() + materias
+                    println(materias)
+
                 }
             } else {
                 cardView.setCardBackgroundColor(Color.BLUE)
@@ -78,7 +81,6 @@ class RecyclerInscripcionCalificacionAdapter(val c: Context, val r: Int, val cal
 
                 if(btnPr1.isChecked ){
                     val inscripcion= JSONObject(""" {"materia":"Quimica","estatus":"Cursando","profesor":"profesorA","hora":"matutino"}""")
-                    println("Se ha seleccionado al profesor 1")
                     inscripcion.put("materia",tvMateria.text)
                     inscripcion.put("estatus","cursando")
                     inscripcion.put("profesor","ProfesorA")
@@ -94,7 +96,6 @@ class RecyclerInscripcionCalificacionAdapter(val c: Context, val r: Int, val cal
 
                 }else{
                     val inscripcion= JSONObject(""" {"materia":"Quimica","estatus":"Cursando","profesor":"profesorA","hora":"matutino"}""")
-                    println("Se ha seleccionado al profesor 2")
                     inscripcion.put("materia",tvMateria.text)
                     inscripcion.put("estatus","cursando")
                     inscripcion.put("profesor","ProfesorB")
@@ -109,7 +110,8 @@ class RecyclerInscripcionCalificacionAdapter(val c: Context, val r: Int, val cal
 
 
                 }
-
+                println("Materias Totales")
+                println(seleccion)
             }
 
         }
