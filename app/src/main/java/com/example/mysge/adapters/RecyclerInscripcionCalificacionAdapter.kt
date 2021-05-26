@@ -1,20 +1,16 @@
 package com.example.mysge.adapters
 
-import android.app.Activity
+
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
-import android.os.Bundle
-import android.view.Gravity
+
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.RadioButton
-import android.widget.RadioGroup
 import android.widget.TextView
 import androidx.cardview.widget.CardView
-import androidx.coordinatorlayout.widget.CoordinatorLayout
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mysge.R
 import com.example.mysge.ScheduleActivity
@@ -89,7 +85,26 @@ class RecyclerInscripcionCalificacionAdapter(val c: Context, val r: Int, val cal
                     seleccion.put(inscripcion)
                     println(seleccion)
                     val snack = Snackbar.make(it, "¿Deseas Terminar?", Snackbar.LENGTH_LONG)
-                    snack.setAction("Si",{"Hola"})
+                    snack.setAction("Si",{
+                        fun onClick(V: View){
+                            //val intent= Intent(this.this, ScheduleActivity::class)
+
+
+                            class ClienteViewHolder(val view: View):RecyclerView.ViewHolder(view){
+                                init {
+                                    view.setOnClickListener {
+                                        val intent = Intent(view.context, ScheduleActivity::class.java)
+                                        intent.putExtra("seleccion", seleccion.toString())
+                                        view.context.startActivity(intent)
+                                        println("Materias Totales")
+                                        println(seleccion)
+                                    }
+                                }
+                            }
+                        }
+
+
+                    })
                     snack.setActionTextColor(Color.RED)
                     snack.show()
 
@@ -104,7 +119,23 @@ class RecyclerInscripcionCalificacionAdapter(val c: Context, val r: Int, val cal
                     seleccion.put(inscripcion)
                     println(seleccion)
                     val snack = Snackbar.make(it, "¿Deseas Terminar?", Snackbar.LENGTH_LONG)
-                    snack.setAction("Si",{"Hola"})
+                    snack.setAction("Si",{
+                        fun onClick(V: View){
+                            class ClienteViewHolder(val view: View):RecyclerView.ViewHolder(view){
+                                init {
+                                    view.setOnClickListener {
+                                        val intent = Intent(view.context, ScheduleActivity::class.java)
+                                        intent.putExtra("seleccion", seleccion.toString())
+                                        view.context.startActivity(intent)
+                                        println("Materias Totales")
+                                        println(seleccion)
+                                    }
+                                }
+                            }
+                        }
+
+
+                    })
                     snack.setActionTextColor(Color.RED)
                     snack.show()
 
@@ -112,6 +143,7 @@ class RecyclerInscripcionCalificacionAdapter(val c: Context, val r: Int, val cal
                 }
                 println("Materias Totales")
                 println(seleccion)
+
             }
 
         }

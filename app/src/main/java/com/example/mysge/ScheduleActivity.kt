@@ -34,10 +34,11 @@ class ScheduleActivity : AppCompatActivity() {
         }
 
         val stringAlumno = intent.getStringExtra("alumno")
-        val carga=intent.getStringArrayListExtra("seleccion")
-        println()
+        val carga=intent.getStringExtra("seleccion")
+        //val jsonInscripcion=JSONObject(carga)
+        //println("Datos contenidos:")
         println(carga)
-        prueba.text=carga.toString()
+        //prueba.text=jsonInscripcion.getString("materia")
         // De String a JSON
         val bd = JSONObject(stringBD)
         val jsonAlumno = JSONObject(stringAlumno)
