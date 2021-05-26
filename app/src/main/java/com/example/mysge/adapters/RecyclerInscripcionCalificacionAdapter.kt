@@ -1,6 +1,7 @@
 package com.example.mysge.adapters
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
@@ -11,13 +12,15 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mysge.R
+import com.example.mysge.ScheduleActivity
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.snackbar.Snackbar
 import org.json.JSONArray
 import org.json.JSONObject
 
 class RecyclerInscripcionCalificacionAdapter(val c: Context, val r: Int, val calificaciones: JSONArray) : RecyclerView.Adapter<RecyclerInscripcionCalificacionAdapter.CalificacionInscripcionVH>()  {
 
-
+    val seleccion = JSONArray()
     inner class CalificacionInscripcionVH(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         fun bind(json : JSONObject) {
@@ -29,8 +32,8 @@ class RecyclerInscripcionCalificacionAdapter(val c: Context, val r: Int, val cal
             val btnPr2=itemView.findViewById<RadioButton>(R.id.Profesor2)
 
             tvMateria.text = json.getString("materia")
-            val inscripcion= JSONObject(""" {"materia":"Quimica","estatus":"Cursando","profesor":"profesorA","hora":"matutino"}""")
-            println(inscripcion)
+            //val inscripcion= JSONObject(""" {"materia":"Quimica","estatus":"Cursando","profesor":"profesorA","hora":"matutino"}""")
+            //println(inscripcion)
             if( ! json.getString("calificacion").equals("-")) {
                 tvCalificacion.text = json.getString("calificacion")
                 if (json.getString("calificacion").toInt() >= 70) {
@@ -49,27 +52,37 @@ class RecyclerInscripcionCalificacionAdapter(val c: Context, val r: Int, val cal
                 cardView.setCardBackgroundColor(Color.BLUE)
                 tvCalificacion.text = "Materia Posible a Seleccionar"
             }
-            val json= JSONObject()
 
             btnSelect.setOnClickListener {
                 cardView.setCardBackgroundColor(Color.RED)
                 tvCalificacion.text = "Cursando"
 
-                if(btnPr1.isChecked){
+                if(btnPr1.isChecked ){
+                    val inscripcion= JSONObject(""" {"materia":"Quimica","estatus":"Cursando","profesor":"profesorA","hora":"matutino"}""")
                     println("Se ha seleccionado al profesor 1")
                     inscripcion.put("materia",tvMateria.text)
                     inscripcion.put("estatus","cursando")
                     inscripcion.put("profesor","ProfesorA")
                     inscripcion.put("hora","matutino")
+
                     println(inscripcion)
+                    seleccion.put(inscripcion)
+                    println(seleccion)
+
+
 
                 }else{
+                    val inscripcion= JSONObject(""" {"materia":"Quimica","estatus":"Cursando","profesor":"profesorA","hora":"matutino"}""")
                     println("Se ha seleccionado al profesor 2")
                     inscripcion.put("materia",tvMateria.text)
                     inscripcion.put("estatus","cursando")
                     inscripcion.put("profesor","ProfesorB")
                     inscripcion.put("hora","vespertino")
                     println(inscripcion)
+                    seleccion.put(inscripcion)
+                    println(seleccion)
+
+
                 }
 
             }
