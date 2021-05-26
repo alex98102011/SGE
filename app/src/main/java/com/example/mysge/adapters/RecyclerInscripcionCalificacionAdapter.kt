@@ -1,8 +1,10 @@
 package com.example.mysge.adapters
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
+import android.os.Bundle
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +14,7 @@ import android.widget.RadioGroup
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.coordinatorlayout.widget.CoordinatorLayout
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mysge.R
 import com.example.mysge.ScheduleActivity
@@ -25,7 +28,7 @@ class RecyclerInscripcionCalificacionAdapter(val c: Context, val r: Int, val cal
     val seleccion = JSONArray()
 
     inner class CalificacionInscripcionVH(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val intent=  Intent(this,ScheduleActivity::class.java)
+
         fun bind(json : JSONObject) {
             val tvMateria = itemView.findViewById<TextView>(R.id.tvRowMateriaInscripcion)
             val tvCalificacion = itemView.findViewById<TextView>(R.id.tvRowCalificacionInscripcion)
@@ -57,6 +60,7 @@ class RecyclerInscripcionCalificacionAdapter(val c: Context, val r: Int, val cal
             }
 
             btnSelect.setOnClickListener {
+
                 cardView.setCardBackgroundColor(Color.RED)
                 tvCalificacion.text = "Cursando"
 
@@ -67,12 +71,21 @@ class RecyclerInscripcionCalificacionAdapter(val c: Context, val r: Int, val cal
                     inscripcion.put("estatus","cursando")
                     inscripcion.put("profesor","ProfesorA")
                     inscripcion.put("hora","matutino")
-
                     println(inscripcion)
                     seleccion.put(inscripcion)
                     println(seleccion)
                     val snack = Snackbar.make(it, "¿Deseas Terminar?", Snackbar.LENGTH_LONG)
-                    snack.setAction("Si", {"Hola"})
+                    snack.setAction("Si") {
+                        class enviardatos(val view: View) : RecyclerView.ViewHolder(view) {
+                            init {
+                                val intent = Intent(view.context, ScheduleActivity::class.java)
+                                intent.putExtra("seleccion", seleccion.toString())
+                                view.context.startActivity(intent)
+
+                            }
+                        }
+
+                    }
                     snack.setActionTextColor(Color.RED)
                     snack.show()
 
@@ -87,6 +100,10 @@ class RecyclerInscripcionCalificacionAdapter(val c: Context, val r: Int, val cal
                     println(inscripcion)
                     seleccion.put(inscripcion)
                     println(seleccion)
+                    val snack = Snackbar.make(it, "¿Deseas Terminar?", Snackbar.LENGTH_LONG)
+                    snack.setAction("Si",{"hola"})
+                    snack.setActionTextColor(Color.RED)
+                    snack.show()
 
 
                 }

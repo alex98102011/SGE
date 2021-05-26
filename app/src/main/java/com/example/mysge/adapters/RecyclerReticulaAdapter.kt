@@ -75,29 +75,7 @@ class RecyclerReticulaAdapter(val c: Context, val res:Int, val kardex:JSONArray,
                 recycler.layoutManager = GridLayoutManager(itemView.context, 3)
             }
 
-           /* if( ! semestreActual.equals(jsonCalificacion.getString("semestre"))) {
-                semestreActual = jsonCalificacion.getString("semestre")
 
-                val tvSemestre = itemView.findViewById<TextView>(R.id.tvRowReticulaSemestre)
-                tvSemestre.text = "Semestre $semestreActual"
-
-                val calificacionesXSemestre = JSONArray()
-                for(i in 0..reticula.length()-1) {
-                    val json = reticula.getJSONObject(i)
-                    if(json.getString("semestre").equals(semestreActual)) {
-                        calificacionesXSemestre.put(json)
-                    }
-                }
-                if(calificacionesXSemestre.length() > 0) {
-                    val recycler = itemView.findViewById<RecyclerView>(R.id.recyclerRowReticula)
-                    recycler.adapter = RecyclerReticulaCalificacionAdapter(
-                        itemView.context,
-                        R.layout.row_materias_reticula,
-                        calificacionesXSemestre
-                    )
-                    recycler.layoutManager = GridLayoutManager(itemView.context, 3)
-                }
-            }*/
         }
     }
 

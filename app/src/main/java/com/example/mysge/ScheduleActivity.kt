@@ -33,7 +33,7 @@ class ScheduleActivity : AppCompatActivity() {
         }
 
         val stringAlumno = intent.getStringExtra("alumno")
-
+        val carga=intent.getStringArrayListExtra("seleccion")
         // De String a JSON
         val bd = JSONObject(stringBD)
         val jsonAlumno = JSONObject(stringAlumno)
