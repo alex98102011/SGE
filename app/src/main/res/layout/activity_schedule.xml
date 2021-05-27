@@ -6,58 +6,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ScheduleActivity">
-
     <TextView
-        android:id="@+id/prueba"
+        android:id="@+id/Lunes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Prueba" />
-
-    <TableRow
-        android:gravity="center"
+        android:text="Lunes" />
+    <TextView
+        android:id="@+id/Mlunes"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_width="wrap_content">
+        android:text="Materia 1"
+        android:layout_gravity="center"
+        >
 
-        <LinearLayout
-            android:id="@+id/linearScheduleMonday"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:layout_margin="5dp"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content" />
+    </TextView>
+    <TextView
 
-        <LinearLayout
-            android:id="@+id/linearScheduleTuesday"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:layout_margin="5dp"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content" />
-
-        <LinearLayout
-            android:id="@+id/linearScheduleWednesday"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:layout_margin="5dp"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content" />
-
-        <LinearLayout
-            android:id="@+id/linearScheduleThursday"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:layout_margin="5dp"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content" />
-
-        <LinearLayout
-            android:id="@+id/linearScheduleFriday"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:layout_margin="5dp"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content" />
-
-    </TableRow>
+        android:id="@+id/Martes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Martes" />
 
 </TableLayout>
