@@ -10,7 +10,7 @@ import android.widget.TextView
 import com.example.mysge.utils.AdminBD
 import org.json.JSONObject
 
-class ScheduleActivity : AppCompatActivity() {
+open class ScheduleActivity : AppCompatActivity() {
     lateinit var linearLunes : LinearLayout
     lateinit var linearMartes : LinearLayout
     lateinit var linearMiercoles : LinearLayout
@@ -27,7 +27,8 @@ class ScheduleActivity : AppCompatActivity() {
         linearMiercoles = findViewById(R.id.linearScheduleWednesday)
         linearJueves = findViewById(R.id.linearScheduleThursday)
         linearViernes = findViewById(R.id.linearScheduleFriday)
-
+        val valor=intent.getStringExtra("seleccion")
+        println(valor.toString())
         var stringBD = intent.getStringExtra("bd")
         if(stringBD == null) {
             stringBD = resources.getString(R.string.jsonAlumnos)
@@ -36,9 +37,10 @@ class ScheduleActivity : AppCompatActivity() {
         val stringAlumno = intent.getStringExtra("alumno")
         val carga=intent.getStringExtra("seleccion")
         //val jsonInscripcion=JSONObject(carga)
-        //println("Datos contenidos:")
+        println("Datos contenidos:")
         println(carga)
-        //prueba.text=jsonInscripcion.getString("materia")
+
+
         // De String a JSON
         val bd = JSONObject(stringBD)
         val jsonAlumno = JSONObject(stringAlumno)

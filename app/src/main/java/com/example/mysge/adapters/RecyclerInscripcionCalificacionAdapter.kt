@@ -1,9 +1,11 @@
 package com.example.mysge.adapters
 
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
+import android.os.Bundle
 
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +13,7 @@ import android.view.ViewGroup
 import android.widget.RadioButton
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import androidx.core.app.ActivityCompat.startActivityForResult
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mysge.R
 import com.example.mysge.ScheduleActivity
@@ -22,7 +25,7 @@ import org.json.JSONObject
 class RecyclerInscripcionCalificacionAdapter(val c: Context, val r: Int, val calificaciones: JSONArray) : RecyclerView.Adapter<RecyclerInscripcionCalificacionAdapter.CalificacionInscripcionVH>()  {
 
     val seleccion = JSONArray()
-    var materias=0
+
     inner class CalificacionInscripcionVH(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         fun bind(json : JSONObject) {
@@ -32,7 +35,6 @@ class RecyclerInscripcionCalificacionAdapter(val c: Context, val r: Int, val cal
             val btnSelect=itemView.findViewById<FloatingActionButton>(R.id.btnSeleccionarMateia)
             val btnPr1=itemView.findViewById<RadioButton>(R.id.Profesor1)
             val btnPr2=itemView.findViewById<RadioButton>(R.id.Profesor2)
-
             tvMateria.text = json.getString("materia")
             //val inscripcion= JSONObject(""" {"materia":"Quimica","estatus":"Cursando","profesor":"profesorA","hora":"matutino"}""")
             //println(inscripcion)
@@ -47,12 +49,11 @@ class RecyclerInscripcionCalificacionAdapter(val c: Context, val r: Int, val cal
 
                 } else {
                     cardView.setCardBackgroundColor(Color.GRAY)
-                    tvCalificacion.text = "Reprobada Cursando"
-                    btnPr1.visibility=View.INVISIBLE
-                    btnPr2.visibility=View.INVISIBLE
-                    btnSelect.visibility=View.INVISIBLE
-                    val inscripcion= JSONObject(""" {"materia":"Quimica","estatus":"Cursando","profesor":"profesorA","hora":"matutino"}""")
-                    println("Se ha seleccionado al profesor 1")
+                    tvCalificacion.text = "Materia Reprobada"
+                    btnPr1.visibility=View.VISIBLE
+                    btnPr2.visibility=View.VISIBLE
+                    btnSelect.visibility=View.VISIBLE
+                    /*println("Se ha seleccionado al profesor 1")
                     inscripcion.put("materia",tvMateria.text)
                     inscripcion.put("estatus","Reprobada_Cursando")
                     inscripcion.put("profesor","ProfesorA")
@@ -60,9 +61,11 @@ class RecyclerInscripcionCalificacionAdapter(val c: Context, val r: Int, val cal
                     println(inscripcion)
                     seleccion.put(inscripcion)
                     println(seleccion)
+                    val intent = Intent(c, ScheduleActivity::class.java)
+                    intent.putExtra("seleccion", seleccion.toString())
+                    materias= seleccion.length() + materias
+                    println(materias)*/
 
-                   materias= seleccion.length() + materias
-                    println(materias)
 
                 }
             } else {
@@ -81,68 +84,46 @@ class RecyclerInscripcionCalificacionAdapter(val c: Context, val r: Int, val cal
                     inscripcion.put("estatus","cursando")
                     inscripcion.put("profesor","ProfesorA")
                     inscripcion.put("hora","matutino")
-                    println(inscripcion)
                     seleccion.put(inscripcion)
-                    println(seleccion)
-                    val snack = Snackbar.make(it, "¿Deseas Terminar?", Snackbar.LENGTH_LONG)
-                    snack.setAction("Si",{
-                        fun onClick(V: View){
-                            //val intent= Intent(this.this, ScheduleActivity::class)
+                    if(seleccion.length()==8){
+                        val snack = Snackbar.make(it, "¿Deseas Terminar?", Snackbar.LENGTH_LONG)
 
-
-                            class ClienteViewHolder(val view: View):RecyclerView.ViewHolder(view){
-                                init {
-                                    view.setOnClickListener {
-                                        val intent = Intent(view.context, ScheduleActivity::class.java)
-                                        intent.putExtra("seleccion", seleccion.toString())
-                                        view.context.startActivity(intent)
-                                        println("Materias Totales")
-                                        println(seleccion)
-                                    }
-                                }
-                            }
+                        snack.setAction("Materias Maximas Seleccionadas") {
+                            val intent = Intent(c, ScheduleActivity::class.java)
+                            intent.putExtra("seleccion", seleccion.toString())
+                            c.startActivity(intent)
                         }
-
-
-                    })
-                    snack.setActionTextColor(Color.RED)
-                    snack.show()
-
-
+                        snack.setActionTextColor(Color.RED)
+                        snack.show()
+                    }
                 }else{
                     val inscripcion= JSONObject(""" {"materia":"Quimica","estatus":"Cursando","profesor":"profesorA","hora":"matutino"}""")
                     inscripcion.put("materia",tvMateria.text)
                     inscripcion.put("estatus","cursando")
                     inscripcion.put("profesor","ProfesorB")
                     inscripcion.put("hora","vespertino")
-                    println(inscripcion)
                     seleccion.put(inscripcion)
-                    println(seleccion)
-                    val snack = Snackbar.make(it, "¿Deseas Terminar?", Snackbar.LENGTH_LONG)
-                    snack.setAction("Si",{
-                        fun onClick(V: View){
-                            class ClienteViewHolder(val view: View):RecyclerView.ViewHolder(view){
-                                init {
-                                    view.setOnClickListener {
-                                        val intent = Intent(view.context, ScheduleActivity::class.java)
-                                        intent.putExtra("seleccion", seleccion.toString())
-                                        view.context.startActivity(intent)
-                                        println("Materias Totales")
-                                        println(seleccion)
-                                    }
-                                }
-                            }
+                    if(seleccion.length()==8){
+                        val snack = Snackbar.make(it, "¿Deseas Terminar?", Snackbar.LENGTH_LONG)
+
+                        snack.setAction("Materias Maximas Seleccionadas") {
+                            val intent = Intent(c, ScheduleActivity::class.java)
+                            intent.putExtra("seleccion", seleccion.toString())
+                            c.startActivity(intent)
                         }
-
-
-                    })
-                    snack.setActionTextColor(Color.RED)
-                    snack.show()
-
-
+                        snack.setActionTextColor(Color.RED)
+                        snack.show()
+                    }
                 }
-                println("Materias Totales")
-                println(seleccion)
+                val snack = Snackbar.make(it, "¿Deseas Terminar?", Snackbar.LENGTH_LONG)
+
+                snack.setAction("Si") {
+                    val intent = Intent(c, ScheduleActivity::class.java)
+                    intent.putExtra("seleccion", seleccion.toString())
+                    c.startActivity(intent)
+                }
+                snack.setActionTextColor(Color.RED)
+                snack.show()
 
             }
 
