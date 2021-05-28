@@ -24,8 +24,7 @@
         android:layout_height="wrap_content"
         android:text="Materia 1"
         android:layout_gravity="center"
-        android:textAlignment="center"
-        >
+        android:textAlignment="center" >
 
     </TextView>
     <TextView
@@ -41,8 +40,15 @@
         android:layout_height="wrap_content"
         android:text="Materia 1"
         android:layout_gravity="center"
-        android:textAlignment="center"
-        />
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/M2Martes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Materia 1"
+        android:layout_gravity="center"
+        android:textAlignment="center" />
     <TextView
 
         android:id="@+id/Miercoles"
@@ -71,6 +77,14 @@
         android:layout_gravity="center"
         android:textAlignment="center"
         />
+
+    <TextView
+        android:id="@+id/M2Jueves"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Materia 1"
+        android:layout_gravity="center"
+        android:textAlignment="center" />
     <TextView
 
         android:id="@+id/Viernes"

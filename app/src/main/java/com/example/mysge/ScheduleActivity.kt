@@ -12,10 +12,12 @@ import org.json.JSONArray
 import org.json.JSONObject
 
 open class ScheduleActivity : AppCompatActivity() {
-lateinit var tvMLunes: TextView
-lateinit var tvMartes: TextView
+    lateinit var tvMLunes: TextView
+    lateinit var tvMartes: TextView
+    lateinit var tvMartes2 : TextView
     lateinit var tvMiercoles: TextView
     lateinit var tvJueves: TextView
+    lateinit var tvJueves2: TextView
     lateinit var tvViernes: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,8 +26,10 @@ lateinit var tvMartes: TextView
 
         tvMLunes=findViewById(R.id.Mlunes)
         tvMartes=findViewById(R.id.MMartes)
+        tvMartes2 = findViewById(R.id.M2Martes)
         tvMiercoles=findViewById(R.id.MMiercoles)
         tvJueves=findViewById(R.id.MJueves)
+        tvJueves2 = findViewById(R.id.M2Jueves)
         tvViernes=findViewById(R.id.MViernes)
 
         val carga = intent.getStringExtra("seleccion")
@@ -54,11 +58,11 @@ lateinit var tvMartes: TextView
 
         val registro6 = jsonmaterias.getJSONObject(5)
         val asignatura6 = registro6.getString("materia")
-        tvMartes.text = asignatura6.toString()
+        tvMartes2.text = asignatura6.toString()
 
         val registro7 = jsonmaterias.getJSONObject(6)
         val asignatura7 = registro7.getString("materia")
-        tvJueves.text = asignatura7.toString()
+        tvJueves2.text = asignatura7.toString()
 
     }
 
