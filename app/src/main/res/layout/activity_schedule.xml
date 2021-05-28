@@ -7,6 +7,13 @@
     android:layout_height="match_parent"
     tools:context=".ScheduleActivity">
     <TextView
+        android:id="@+id/Horario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Horario"
+        android:textAlignment="center"
+        />
+    <TextView
         android:id="@+id/Lunes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -17,6 +24,7 @@
         android:layout_height="wrap_content"
         android:text="Materia 1"
         android:layout_gravity="center"
+        android:textAlignment="center"
         >
 
     </TextView>
@@ -26,5 +34,56 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Martes" />
+
+    <TextView
+        android:id="@+id/MMartes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Materia 1"
+        android:layout_gravity="center"
+        android:textAlignment="center"
+        />
+    <TextView
+
+        android:id="@+id/Miercoles"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Miercoles" />
+    <TextView
+        android:id="@+id/MMiercoles"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Materia 1"
+        android:layout_gravity="center"
+        android:textAlignment="center"
+        />
+    <TextView
+
+        android:id="@+id/Jueves"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Jueves" />
+    <TextView
+        android:id="@+id/MJueves"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Materia 1"
+        android:layout_gravity="center"
+        android:textAlignment="center"
+        />
+    <TextView
+
+        android:id="@+id/Viernes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Viernes" />
+    <TextView
+        android:id="@+id/MViernes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Materia 1"
+        android:layout_gravity="center"
+        android:textAlignment="center"
+        />
 
 </TableLayout>
