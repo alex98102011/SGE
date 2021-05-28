@@ -31,21 +31,35 @@ lateinit var tvMartes: TextView
         val carga = intent.getStringExtra("seleccion")
         println(carga)
         val jsonmaterias=JSONArray(carga)
+
         val registro1=jsonmaterias.getJSONObject(0)
         val asignatura1=registro1.getString("materia")
         tvMLunes.text=asignatura1.toString()
+
         val registro2=jsonmaterias.getJSONObject(1)
         val asignatura2=registro2.getString("materia")
         tvMartes.text=asignatura2.toString()
+
         val registro3=jsonmaterias.getJSONObject(2)
         val asignatura3=registro3.getString("materia")
         tvMiercoles.text=asignatura3.toString()
+
         val registro4=jsonmaterias.getJSONObject(3)
         val asignatura4=registro4.getString("materia")
         tvJueves.text=asignatura4.toString()
+
         val registro5=jsonmaterias.getJSONObject(4)
         val asignatura5=registro5.getString("materia")
         tvViernes.text=asignatura5.toString()
+
+        val registro6 = jsonmaterias.getJSONObject(5)
+        val asignatura6 = registro6.getString("materia")
+        tvMartes.text = asignatura6.toString()
+
+        val registro7 = jsonmaterias.getJSONObject(6)
+        val asignatura7 = registro7.getString("materia")
+        tvJueves.text = asignatura7.toString()
+
     }
 
 }
